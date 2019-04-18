@@ -15,7 +15,7 @@ class Task:
         return [self.title, self.description, self.due] 
     
     def gen_hash(self):
-        return hashlib.md5(self.title+self.description+self.due).hexdigest()
+        return hashlib.md5(self.title.encode('utf-8')+self.description.encode('utf-8')+self.due.encode('utf-8')).hexdigest()
 
 class Worksheet:
     def __init__(self, key):
@@ -88,9 +88,3 @@ if __name__ == '__main__':
 
     data = Worksheet(key)
     data.initialise(credsfile)
-
-    for i in  data.get_all_tasks():
-        print i.title
-        print i.description
-        print i.due
-        print "%%%%%%%%%"

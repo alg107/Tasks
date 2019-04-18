@@ -28,7 +28,7 @@ def tasks():
         resp.status_code = 200
         return resp
     except Exception as e:
-        print e
+        print(e)
 
 @app.route('/task/<hsh>/')
 def task(hsh):
@@ -40,7 +40,7 @@ def task(hsh):
             return jsonify(task.__dict__)
 
     except Exception as e:
-        print e
+        print(e)
 
 
 @app.route('/add/', methods=['POST'])
@@ -57,10 +57,9 @@ def add_user():
                         task = Tasks.Task(_title, _description, _due)
                         new_hash = db.new_task(task)
                         
-                        resp = jsonify({'message': 'User added successfully!',
-                            'hash': new_hash,})
-			resp.status_code = 200
-			return resp
+                        resp = jsonify({'message': 'User added successfully!','hash': new_hash,})
+                        resp.status_code = 200
+                        return resp
 		else:
 			return not_found()
 	except Exception as e:
@@ -84,8 +83,8 @@ def update_user(hsh):
                         
                         resp = jsonify({'message': 'User updated successfully!',
                             'hash': new_hash,})
-			resp.status_code = 200
-			return resp
+                        resp.status_code = 200
+                        return resp
 		else:
 			return not_found()
 	except Exception as e:
@@ -99,8 +98,8 @@ def delete_user(hsh):
                     resp = jsonify("No such task found")
                 else:
                     resp = jsonify('User deleted successfully!')
-		resp.status_code = 200
-		return resp
+                resp.status_code = 200
+                return resp
 	except Exception as e:
 		print(e)
 
