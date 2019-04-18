@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import jsonify
-from flask import flash, request
+from flask import Flask, jsonify, flash, request
 import Tasks
 
 app = Flask(__name__)
